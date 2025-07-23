@@ -11,6 +11,8 @@ const Header = () => {
     name: ''
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userInfo, setUserInfo] = useState<{name: string, email: string} | null>(null);
 
   const handleAuthSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,13 +48,26 @@ const Header = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       if (authMode === 'signup') {
-        alert(`🎉 Welcome to Secure VPN, ${formData.name}!\n\n✅ Account created successfully\n✅ Verification email sent to ${formData.email}\n✅ 7-day free trial activated\n\nRedirecting to dashboard...`);
+        alert(`🎉 Welcome to Secure VPN, ${formData.name}!\n\n📋 Account Details:\n• Full Name: ${formData.name}\n• Email: ${formData.email}\n• Password: ${'*'.repeat(formData.password.length)} (${formData.password.length} characters)\n\n✅ Account created successfully\n✅ Verification email sent to ${formData.email}\n✅ 7-day free trial activated\n✅ Profile setup complete\n\nRedirecting to dashboard...`);
       } else {
-        alert(`🚀 Welcome back to Secure VPN!\n\n✅ Login successful\n✅ All devices synced\n✅ Premium features available\n\nRedirecting to dashboard...`);
+        alert(`🚀 Welcome back to Secure VPN!\n\n📋 Login Details:\n• Email: ${formData.email}\n• Password: ${'*'.repeat(formData.password.length)} (${formData.password.length} characters)\n• Login Time: ${new Date().toLocaleTimeString()}\n\n✅ Login successful\n✅ All devices synced\n✅ Premium features available\n✅ Session restored\n\nRedirecting to dashboard...`);
       }
       
+      const userDetails = {
+        name: authMode === 'signup' ? formData.name : 'Returning User',
+        email: formData.email
+      };
+
+      // Set user state and redirect
+      setUserInfo(userDetails);
+      setIsLoggedIn(true);
       setShowAuthModal(false);
       setFormData({ email: '', password: '', confirmPassword: '', name: '' });
+      
+      // Redirect to dashboard after a short delay
+      setTimeout(() => {
+        window.open('https://dashboard.securevpn.com/dashboard', '_blank');
+      }, 1000);
     } catch (error) {
       alert('Authentication failed. Please try again.');
     } finally {
