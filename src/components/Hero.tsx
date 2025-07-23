@@ -1,6 +1,17 @@
 ﻿import React, { useState } from "react";
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onLogin: (userDetails: { name: string; email: string; }) => void;
+  onNavigateToPayment?: (plan?: {
+    name: string;
+    price: string;
+    duration: string;
+    features: string[];
+  }) => void;
+  isLoggedIn?: boolean;
+}
+
+const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = false }) => {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('signup');
   const [formData, setFormData] = useState({
@@ -10,12 +21,28 @@ const Hero: React.FC = () => {
     name: ''
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userInfo, setUserInfo] = useState<{name: string, email: string} | null>(null);
 
   const handleGetSecureVPN = () => {
-    setAuthMode('signup');
-    setShowAuthModal(true);
+    if (isLoggedIn && onNavigateToPayment) {
+      // If user is logged in, navigate to payment with a default plan
+      onNavigateToPayment({
+        name: 'VPN Pro',
+        price: '$9.99',
+        duration: 'month',
+        features: [
+          'Unlimited bandwidth',
+          'AES-256 encryption', 
+          '50+ server locations',
+          '24/7 customer support',
+          'No logs policy',
+          'Kill switch protection'
+        ]
+      });
+    } else {
+      // If user is not logged in, show auth modal
+      setAuthMode('signup');
+      setShowAuthModal(true);
+    }
   };
 
   const handleAuthSubmit = async (e: React.FormEvent) => {
@@ -62,16 +89,10 @@ const Hero: React.FC = () => {
         email: formData.email
       };
 
-      // Set user state and redirect
-      setUserInfo(userDetails);
-      setIsLoggedIn(true);
+      // Call parent's onLogin to update app state
+      onLogin(userDetails);
       setShowAuthModal(false);
       setFormData({ email: '', password: '', confirmPassword: '', name: '' });
-      
-      // Redirect to dashboard after a short delay
-      setTimeout(() => {
-        window.open('https://dashboard.securevpn.com/dashboard', '_blank');
-      }, 1000);
     } catch (error) {
       alert('Authentication failed. Please try again.');
     } finally {
@@ -87,12 +108,29 @@ const Hero: React.FC = () => {
   };
 
   const handleViewPlans = () => {
-    const pricingSection = document.getElementById('pricing');
-    if (pricingSection) {
-      pricingSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+    if (isLoggedIn && onNavigateToPayment) {
+      // If user is logged in, navigate to payment with a default plan
+      onNavigateToPayment({
+        name: 'VPN Starter',
+        price: '$4.99',
+        duration: 'month',
+        features: [
+          'High-speed connections',
+          'Basic encryption',
+          '25+ server locations',
+          'Email support',
+          'No logs policy'
+        ]
       });
+    } else {
+      // If user is not logged in, scroll to pricing section
+      const pricingSection = document.getElementById('pricing');
+      if (pricingSection) {
+        pricingSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
     }
   };
 

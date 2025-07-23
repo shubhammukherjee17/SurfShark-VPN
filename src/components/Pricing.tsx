@@ -1,10 +1,26 @@
 import React, { useState } from 'react';
 
-const Pricing: React.FC = () => {
+interface PricingProps {
+  onNavigateToPayment: (plan?: {
+    name: string;
+    price: string;
+    duration: string;
+    features: string[];
+  }) => void;
+}
+
+const Pricing: React.FC<PricingProps> = ({ onNavigateToPayment }) => {
   const [selectedPeriod, setSelectedPeriod] = useState('24 months');
 
-  const handlePlanSelection = (planName: string, price: string) => {
-    alert(`🎯 ${planName} Plan Selected!\n\nPrice: ${price}\n\n✅ Redirecting to secure checkout...\n✅ SSL encrypted payment\n✅ Multiple payment options available\n\nYou'll be redirected to our secure payment portal!`);
+  const handlePlanSelection = (planName: string, price: string, features: string[]) => {
+    const planDetails = {
+      name: planName,
+      price: price,
+      duration: selectedPeriod,
+      features: features
+    };
+    
+    onNavigateToPayment(planDetails);
   };
 
   const plans = {
@@ -281,7 +297,7 @@ const Pricing: React.FC = () => {
 
               {/* CTA Button */}
               <button
-                onClick={() => handlePlanSelection(plan.name, plan.price)}
+                onClick={() => handlePlanSelection(plan.name, plan.price, plan.features)}
                 className={`w-full py-3 px-6 rounded-full font-medium transition-all duration-300 mb-6 ${
                   plan.teal
                     ? 'bg-teal-500 hover:bg-teal-600 text-white'
