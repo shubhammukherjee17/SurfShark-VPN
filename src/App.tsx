@@ -25,7 +25,7 @@ function App() {
   const handleLogin = (userDetails: {name: string, email: string}) => {
     setUser(userDetails);
     setIsLoggedIn(true);
-    setShowDashboard(true); // Automatically show dashboard after login
+    setShowDashboard(true); 
   };
 
   const handleLogout = () => {
@@ -76,7 +76,6 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, []);
 
-  // If showing payment page
   if (showPayment && isLoggedIn && user) {
     return (
       <div className="App">
@@ -85,8 +84,6 @@ function App() {
           onBackToWebsite={handleNavigateToWebsite}
           selectedPlan={selectedPlan || undefined}
         />
-        
-        {/* Floating Support Button */}
         <button
           onClick={handleEmergencySupport}
           className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl z-50 transition-all duration-300 hover:scale-110 animate-pulse-glow"
@@ -100,13 +97,10 @@ function App() {
     );
   }
 
-  // If user is logged in and wants to see dashboard, show dashboard
   if (isLoggedIn && user && showDashboard) {
     return (
       <div className="App">
         <Dashboard user={user} onLogout={handleLogout} />
-        
-        {/* Header for navigation back to website */}
         <div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-neutral-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-12">
@@ -131,8 +125,7 @@ function App() {
             </div>
           </div>
         </div>
-        
-        {/* Floating Support Button */}
+
         <button
           onClick={handleEmergencySupport}
           className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl z-50 transition-all duration-300 hover:scale-110 animate-pulse-glow"
@@ -145,8 +138,6 @@ function App() {
       </div>
     );
   }
-
-  // Otherwise, show the main website with header containing user info if logged in
   return (
     <div className="App">
       <Header 
@@ -167,8 +158,7 @@ function App() {
       <Testimonials />
       <FAQ />
       <Footer />
-      
-      {/* Floating Support Button */}
+
       <button
         onClick={handleEmergencySupport}
         className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl z-50 transition-all duration-300 hover:scale-110 animate-pulse-glow"

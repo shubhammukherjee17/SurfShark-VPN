@@ -22,7 +22,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
   const [isLoading, setIsLoading] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -40,7 +39,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
     e.preventDefault();
     setIsLoading(true);
 
-    // Basic validation
     if (authMode === 'signup') {
       if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
         alert('Please fill in all fields');
@@ -65,7 +63,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
       }
     }
 
-    // Simulate API call
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
@@ -80,7 +77,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
         email: formData.email
       };
 
-      // Call parent's onLogin to update app state
       if (onLogin) {
         onLogin(userDetails);
       }
@@ -117,7 +113,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
     <header className="bg-white/95 backdrop-blur-sm shadow-lg fixed w-full top-0 z-50 border-b border-brand-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <button 
             onClick={handleLogoClick}
             className="flex items-center space-x-2 flex-shrink-0 hover:opacity-80 transition-opacity duration-200"
@@ -132,7 +127,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
             </div>
           </button>
 
-          {/* Desktop Navigation Menu */}
           <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <a 
               href="#features" 
@@ -164,7 +158,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
             </a>
           </nav>
 
-          {/* User Section - Show when logged in */}
           {isLoggedIn && user ? (
             <div className="hidden md:flex items-center relative" ref={dropdownRef}>
               <button
@@ -187,7 +180,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
                 </svg>
               </button>
 
-              {/* User Dropdown */}
               {showUserDropdown && (
                 <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-neutral-200 py-2 z-50">
                   <div className="px-4 py-2 border-b border-neutral-100">
@@ -225,7 +217,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
             </div>
           ) : null}
 
-          {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-neutral-600 hover:text-brand-600 hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-500 transition-all duration-200"
@@ -254,7 +245,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
           </button>
         </div>
 
-        {/* Mobile Navigation Menu */}
         <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-neutral-100">
             <button
@@ -285,12 +275,10 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
         </div>
       </div>
 
-      {/* Authentication Modal */}
       {showAuthModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-fade-in">
             <div className="p-6 sm:p-8">
-              {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-gradient-to-br from-brand-500 to-brand-600 rounded-lg flex items-center justify-center">
@@ -312,7 +300,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
                 </button>
               </div>
 
-              {/* Form */}
               <form onSubmit={handleAuthSubmit} className="space-y-4">
                 {authMode === 'signup' && (
                   <div>
@@ -402,7 +389,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
                 </button>
               </form>
 
-              {/* Toggle Mode */}
               <div className="mt-6 text-center">
                 <p className="text-sm text-neutral-600">
                   {authMode === 'signup' ? 'Already have an account?' : "Don't have an account?"}
@@ -416,7 +402,6 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
                 </p>
               </div>
 
-              {/* Features */}
               {authMode === 'signup' && (
                 <div className="mt-6 pt-6 border-t border-neutral-200">
                   <h3 className="text-sm font-semibold text-neutral-900 mb-3">What you get:</h3>

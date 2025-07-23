@@ -202,14 +202,13 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToPayment }) => {
   return (
     <section id="pricing" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Section Header */}
+
         <div className="text-center mb-12">
           <h2 className="text-5xl font-bold text-gray-900 mb-6">
             Compare VPN plans & pricing
           </h2>
         </div>
 
-        {/* Period Selector */}
         <div className="flex justify-center mb-12">
           <div className="flex bg-gray-100 rounded-lg p-1">
             {Object.keys(plans).map((period) => (
@@ -228,7 +227,6 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToPayment }) => {
           </div>
         </div>
 
-        {/* Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {currentPlans.map((plan, index) => (
             <div
@@ -239,7 +237,6 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToPayment }) => {
                   : 'border-gray-200'
               } transition-all duration-300 hover:shadow-lg`}
             >
-              {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                   <div className="bg-teal-500 text-white px-4 py-1 rounded-full text-sm font-medium">
@@ -248,19 +245,16 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToPayment }) => {
                 </div>
               )}
 
-              {/* Savings Badge */}
               {plan.savings && (
                 <div className="inline-block bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium mb-4">
                   {plan.savings}
                 </div>
               )}
 
-              {/* Plan Name */}
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 {plan.name}
               </h3>
 
-              {/* Price */}
               <div className="mb-6">
                 <div className="flex items-baseline">
                   <span className="text-5xl font-bold text-gray-900">
@@ -270,15 +264,13 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToPayment }) => {
                     {plan.period}
                   </span>
                 </div>
-                
-                {/* Extra Months */}
+          
                 {plan.extraMonths && (
                   <div className="text-red-500 font-medium mt-2">
                     {plan.extraMonths}
                   </div>
                 )}
 
-                {/* Billing Info */}
                 <div className="text-sm text-gray-600 mt-3">
                   {plan.originalPrice && plan.finalPrice && (
                     <>
@@ -295,7 +287,6 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToPayment }) => {
                 </div>
               </div>
 
-              {/* CTA Button */}
               <button
                 onClick={() => handlePlanSelection(plan.name, plan.price, plan.features)}
                 className={`w-full py-3 px-6 rounded-full font-medium transition-all duration-300 mb-6 ${
@@ -307,7 +298,6 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToPayment }) => {
                 {plan.buttonText}
               </button>
 
-              {/* Features */}
               <ul className="space-y-3">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start">
@@ -322,7 +312,6 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToPayment }) => {
           ))}
         </div>
 
-        {/* Bottom Note */}
         <div className="text-center mt-12">
           <p className="text-gray-600">
             All plans include 30-day money-back guarantee and 24/7 customer support

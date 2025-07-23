@@ -27,7 +27,6 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
   const [couponCode, setCouponCode] = useState('');
   const [discount, setDiscount] = useState(0);
 
-  // Default plan if none selected
   const plan = selectedPlan || {
     name: 'Premium Plan',
     price: '$9.99',
@@ -38,11 +37,9 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     if (name === 'cardNumber') {
-      // Format card number with spaces
       const formatted = value.replace(/\s/g, '').replace(/(.{4})/g, '$1 ').trim();
       setFormData(prev => ({ ...prev, [name]: formatted }));
     } else if (name === 'expiryDate') {
-      // Format expiry date MM/YY
       const formatted = value.replace(/\D/g, '').replace(/(\d{2})(\d{2})/, '$1/$2');
       setFormData(prev => ({ ...prev, [name]: formatted }));
     } else {
@@ -75,13 +72,11 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
     e.preventDefault();
     setIsProcessing(true);
 
-    // Simulate payment processing
     try {
       await new Promise(resolve => setTimeout(resolve, 3000));
       
       alert(`🎉 Payment Successful!\n\n📋 Order Details:\n• Plan: ${plan.name}\n• Amount: $${calculateTotal()}\n• Payment Method: ${paymentMethod === 'card' ? 'Credit Card' : 'PayPal'}\n• User: ${user.name}\n• Email: ${user.email}\n\n✅ Your VPN access is now active!\n✅ Welcome email sent\n✅ Account upgraded to Premium\n\nRedirecting to dashboard...`);
-      
-      // Here you would typically redirect to dashboard or success page
+ 
       setTimeout(() => {
         onBackToWebsite();
       }, 2000);
@@ -94,7 +89,6 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-brand-50 via-brand-100 to-brand-200 pt-16">
-      {/* Header */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -124,12 +118,9 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-2xl shadow-xl p-6 sticky top-24">
               <h2 className="text-xl font-bold text-neutral-900 mb-6">Order Summary</h2>
-              
-              {/* Plan Details */}
               <div className="border border-neutral-200 rounded-xl p-4 mb-6">
                 <h3 className="font-semibold text-neutral-900 mb-2">{plan.name}</h3>
                 <p className="text-sm text-neutral-600 mb-3">Billed {plan.duration}ly</p>
@@ -145,7 +136,6 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
                 </ul>
               </div>
 
-              {/* Coupon Code */}
               <div className="mb-6">
                 <label className="block text-sm font-medium text-neutral-700 mb-2">
                   Coupon Code
@@ -168,7 +158,6 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
                 </div>
               </div>
 
-              {/* Price Breakdown */}
               <div className="space-y-3 text-sm border-t border-neutral-200 pt-4">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
@@ -186,7 +175,6 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
                 </div>
               </div>
 
-              {/* Security Badge */}
               <div className="mt-6 flex items-center space-x-2 text-sm text-neutral-600">
                 <svg className="w-5 h-5 text-brand-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
@@ -196,19 +184,16 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
             </div>
           </div>
 
-          {/* Payment Form */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
               <h1 className="text-2xl font-bold text-neutral-900 mb-6">Complete Your Payment</h1>
 
-              {/* User Info */}
               <div className="mb-6 p-4 bg-brand-50 rounded-xl">
                 <h3 className="font-semibold text-neutral-900 mb-2">Account Details</h3>
                 <p className="text-sm text-neutral-600">Name: {user.name}</p>
                 <p className="text-sm text-neutral-600">Email: {user.email}</p>
               </div>
 
-              {/* Payment Method Selection */}
               <div className="mb-6">
                 <h3 className="font-semibold text-neutral-900 mb-4">Payment Method</h3>
                 <div className="grid grid-cols-2 gap-4">
@@ -244,7 +229,6 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
                 </div>
               </div>
 
-              {/* Payment Form */}
               <form onSubmit={handlePayment} className="space-y-6">
                 {paymentMethod === 'card' ? (
                   <>
@@ -316,7 +300,6 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
                       </div>
                     </div>
 
-                    {/* Billing Address */}
                     <div>
                       <h3 className="font-semibold text-neutral-900 mb-4">Billing Address</h3>
                       <div className="space-y-4">
@@ -396,7 +379,6 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
                   </div>
                 )}
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isProcessing}
@@ -412,7 +394,6 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
                   )}
                 </button>
 
-                {/* Security Info */}
                 <div className="text-center text-sm text-neutral-600 mt-4">
                   <p>🔒 Your payment information is encrypted and secure</p>
                   <p>30-day money-back guarantee • Cancel anytime</p>

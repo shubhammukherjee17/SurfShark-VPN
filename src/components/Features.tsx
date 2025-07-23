@@ -73,7 +73,6 @@ const Features: React.FC = () => {
 
   return (
     <section id="features" className="py-20 bg-neutral-50 relative overflow-hidden">
-      {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 -left-32 w-64 h-64 bg-gradient-to-r from-brand-200/30 to-brand-300/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-gradient-to-r from-brand-300/20 to-brand-200/30 rounded-full blur-3xl"></div>
@@ -113,7 +112,6 @@ const Features: React.FC = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
         <div className="text-center mt-16">
           <button className="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-xl-accent hover:scale-105 transition-all duration-300">
             Start Your Free Trial

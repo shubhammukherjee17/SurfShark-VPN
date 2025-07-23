@@ -24,7 +24,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
 
   const handleGetSecureVPN = () => {
     if (isLoggedIn && onNavigateToPayment) {
-      // If user is logged in, navigate to payment with a default plan
       onNavigateToPayment({
         name: 'VPN Pro',
         price: '$9.99',
@@ -39,7 +38,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
         ]
       });
     } else {
-      // If user is not logged in, show auth modal
       setAuthMode('signup');
       setShowAuthModal(true);
     }
@@ -49,7 +47,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
     e.preventDefault();
     setIsLoading(true);
 
-    // Basic validation
     if (authMode === 'signup') {
       if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
         alert('Please fill in all fields');
@@ -73,8 +70,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
         return;
       }
     }
-
-    // Simulate API call
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
@@ -88,8 +83,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
         name: authMode === 'signup' ? formData.name : 'Returning User',
         email: formData.email
       };
-
-      // Call parent's onLogin to update app state
       onLogin(userDetails);
       setShowAuthModal(false);
       setFormData({ email: '', password: '', confirmPassword: '', name: '' });
@@ -109,7 +102,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
 
   const handleViewPlans = () => {
     if (isLoggedIn && onNavigateToPayment) {
-      // If user is logged in, navigate to payment with a default plan
       onNavigateToPayment({
         name: 'VPN Starter',
         price: '$4.99',
@@ -123,7 +115,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
         ]
       });
     } else {
-      // If user is not logged in, scroll to pricing section
       const pricingSection = document.getElementById('pricing');
       if (pricingSection) {
         pricingSection.scrollIntoView({ 
@@ -136,7 +127,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-brand-50 via-brand-100 to-brand-200 pt-16 sm:pt-20 relative overflow-hidden">
-      {/* Background Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 sm:w-80 h-40 sm:h-80 bg-gradient-to-br from-brand-300/30 to-brand-400/20 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 -left-10 sm:-left-20 w-30 sm:w-60 h-30 sm:h-60 bg-gradient-to-br from-brand-200/40 to-brand-300/20 rounded-full blur-3xl"></div>
@@ -145,7 +135,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[80vh]">
-          {/* Left Content */}
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left animate-fade-in order-2 lg:order-1">
             <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-brand-100 text-brand-700 rounded-full text-xs sm:text-sm font-medium mb-4">
               <svg className="w-3 sm:w-4 h-3 sm:h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -197,14 +186,11 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
             </div>
           </div>
 
-          {/* Right Content - Device Mockups */}
           <div className="relative flex justify-center lg:justify-end animate-slide-up order-1 lg:order-2 px-4 sm:px-0">
             <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg">
-              {/* Phone Mockup */}
               <div className="relative z-20 transform -rotate-6 sm:-rotate-12 translate-x-4 sm:translate-x-8 mx-auto">
                 <div className="w-48 sm:w-56 md:w-64 h-[390px] sm:h-[450px] md:h-[520px] bg-neutral-900 rounded-[2rem] sm:rounded-[2.5rem] p-1.5 sm:p-2 shadow-2xl">
                   <div className="w-full h-full bg-gradient-to-br from-brand-500 to-brand-600 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden relative">
-                    {/* Phone Status Bar */}
                     <div className="flex justify-between items-center p-3 sm:p-4 text-white text-xs sm:text-sm">
                       <span className="font-medium">Secure VPN</span>
                       <div className="flex space-x-1">
@@ -213,8 +199,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
                         <div className="w-1 h-1 bg-white rounded-full"></div>
                       </div>
                     </div>
-                    
-                    {/* Phone Content */}
                     <div className="px-4 sm:px-6 py-6 sm:py-8 text-white text-center">
                       <div className="w-12 sm:w-16 h-12 sm:h-16 bg-white/20 rounded-xl sm:rounded-2xl mx-auto mb-4 sm:mb-6 flex items-center justify-center backdrop-blur-sm">
                         <svg className="w-6 sm:w-8 h-6 sm:h-8" fill="currentColor" viewBox="0 0 20 20">
@@ -238,12 +222,9 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
                   </div>
                 </div>
               </div>
-
-              {/* Desktop/Laptop Mockup */}
               <div className="absolute -bottom-2 sm:-bottom-4 md:-bottom-6 -left-4 sm:-left-6 md:-left-8 z-10 transform rotate-3 sm:rotate-6">
                 <div className="w-48 sm:w-64 md:w-80 h-30 sm:h-40 md:h-48 bg-neutral-800 rounded-lg sm:rounded-xl p-0.5 sm:p-1 shadow-2xl scale-75 sm:scale-90 md:scale-100">
                   <div className="w-full h-full bg-neutral-900 rounded-lg sm:rounded-xl overflow-hidden relative">
-                    {/* Desktop Content */}
                     <div className="p-2 sm:p-3 md:p-4 text-white">
                       <div className="flex items-center space-x-1 sm:space-x-2 mb-2 sm:mb-4">
                         <div className="w-2 sm:w-3 h-2 sm:h-3 bg-accent-500 rounded-full"></div>
@@ -270,8 +251,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
                   </div>
                 </div>
               </div>
-
-              {/* Floating Shield Icon */}
               <div className="absolute top-1/3 sm:top-1/2 -right-2 sm:right-4 md:right-8 transform -translate-y-1/2 z-30">
                 <div className="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-white rounded-full flex items-center justify-center shadow-xl-brand">
                   <svg className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 text-brand-500" fill="currentColor" viewBox="0 0 20 20">
@@ -283,7 +262,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
           </div>
         </div>
 
-        {/* Trust Indicators */}
         <div className="mt-12 sm:mt-16 lg:mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
           <div className="space-y-1 sm:space-y-2">
             <div className="text-xl sm:text-2xl font-bold text-brand-600">10M+</div>
@@ -304,12 +282,10 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
         </div>
       </div>
 
-      {/* Authentication Modal */}
       {showAuthModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-fade-in">
             <div className="p-6 sm:p-8">
-              {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-gradient-to-br from-brand-500 to-brand-600 rounded-lg flex items-center justify-center">
@@ -331,7 +307,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
                 </button>
               </div>
 
-              {/* Form */}
               <form onSubmit={handleAuthSubmit} className="space-y-4">
                 {authMode === 'signup' && (
                   <div>
@@ -420,8 +395,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
                   )}
                 </button>
               </form>
-
-              {/* Toggle Mode */}
               <div className="mt-6 text-center">
                 <p className="text-sm text-neutral-600">
                   {authMode === 'signup' ? 'Already have an account?' : "Don't have an account?"}
@@ -434,8 +407,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
                   </button>
                 </p>
               </div>
-
-              {/* Features */}
               {authMode === 'signup' && (
                 <div className="mt-6 pt-6 border-t border-neutral-200">
                   <h3 className="text-sm font-semibold text-neutral-900 mb-3">What you get:</h3>

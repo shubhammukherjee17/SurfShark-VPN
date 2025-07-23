@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Note: Testimonials are created using AI to show diverse user experiences and trust in the VPN service.
+
 const Testimonials: React.FC = () => {
   const testimonials = [
     {
@@ -78,24 +80,21 @@ const Testimonials: React.FC = () => {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
               className="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              {/* Rating */}
+
               <div className="flex items-center mb-4">
                 {renderStars(testimonial.rating)}
               </div>
 
-              {/* Testimonial Text */}
               <blockquote className="text-gray-700 mb-6 leading-relaxed">
                 "{testimonial.text}"
               </blockquote>
 
-              {/* User Info */}
               <div className="flex items-center">
                 <div className="text-3xl mr-4">
                   {testimonial.avatar}
@@ -110,7 +109,6 @@ const Testimonials: React.FC = () => {
           ))}
         </div>
 
-        {/* Trust Indicators */}
         <div className="bg-blue-50 rounded-2xl p-8">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -138,7 +136,6 @@ const Testimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Awards Section */}
         <div className="mt-16 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-8">
             Award-Winning VPN Service
