@@ -10,7 +10,8 @@ const Features: React.FC = () => {
       ),
       title: "Military-Grade Encryption",
       description: "AES-256 encryption keeps your data safe from hackers, ISPs, and government surveillance.",
-      gradient: "from-blue-500 to-cyan-500"
+      bgColor: "bg-brand-50",
+      iconColor: "text-brand-600"
     },
     {
       icon: (
@@ -20,7 +21,8 @@ const Features: React.FC = () => {
       ),
       title: "Lightning Fast Speeds",
       description: "Connect to 3200+ high-speed servers worldwide for seamless streaming and browsing.",
-      gradient: "from-yellow-500 to-orange-500"
+      bgColor: "bg-yellow-50",
+      iconColor: "text-yellow-600"
     },
     {
       icon: (
@@ -31,7 +33,8 @@ const Features: React.FC = () => {
       ),
       title: "No-Logs Policy",
       description: "We don't track, collect, or share your private data. Your online activity is your business.",
-      gradient: "from-green-500 to-emerald-500"
+      bgColor: "bg-green-50",
+      iconColor: "text-green-600"
     },
     {
       icon: (
@@ -41,7 +44,8 @@ const Features: React.FC = () => {
       ),
       title: "Global Server Network",
       description: "Access content from anywhere with servers in 65+ countries across 6 continents.",
-      gradient: "from-purple-500 to-pink-500"
+      bgColor: "bg-purple-50",
+      iconColor: "text-purple-600"
     },
     {
       icon: (
@@ -51,7 +55,8 @@ const Features: React.FC = () => {
       ),
       title: "Multi-Device Support",
       description: "Protect up to 10 devices simultaneously with apps for all major platforms.",
-      gradient: "from-indigo-500 to-blue-500"
+      bgColor: "bg-indigo-50",
+      iconColor: "text-indigo-600"
     },
     {
       icon: (
@@ -61,78 +66,58 @@ const Features: React.FC = () => {
       ),
       title: "24/7 Customer Support",
       description: "Get help whenever you need it with our round-the-clock customer support team.",
-      gradient: "from-red-500 to-rose-500"
+      bgColor: "bg-accent-50",
+      iconColor: "text-accent-600"
     }
   ];
 
   return (
-    <section id="features" className="section-padding bg-gray-50 relative overflow-hidden">
+    <section id="features" className="py-20 bg-neutral-50 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-10 right-10 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-gradient-to-r from-brand-200/30 to-brand-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-gradient-to-r from-brand-300/20 to-brand-200/30 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container-custom relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-slide-up">
-          <h2 className="text-section heading-modern text-gray-900 mb-4 text-shadow">
-            Why Choose <span className="gradient-text">SurfShark VPN</span>?
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-neutral-900 mb-6">
+            Why Choose <span className="bg-gradient-to-r from-brand-600 to-brand-700 bg-clip-text text-transparent">Secure VPN</span>?
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Experience the ultimate online privacy and security with our cutting-edge VPN technology
+          <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
+            Experience unmatched security, speed, and freedom with our comprehensive VPN solution designed for modern digital life.
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div
-              key={index}
-              className="card card-hover p-8 group animate-fade-scale"
+            <div 
+              key={index} 
+              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl-brand transition-all duration-300 hover:-translate-y-2 border border-neutral-100 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className={`text-white mb-6 w-16 h-16 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110`}>
-                {feature.icon}
+              <div className={`w-16 h-16 ${feature.bgColor} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={feature.iconColor}>
+                  {feature.icon}
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 heading-modern">
+              
+              <h3 className="text-xl font-bold text-neutral-900 mb-4 group-hover:text-brand-600 transition-colors duration-200">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed text-modern">
+              
+              <p className="text-neutral-600 leading-relaxed">
                 {feature.description}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Enhanced Stats Section */}
-        <div className="card p-12 text-center shadow-glow animate-fade-scale">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="group">
-              <div className="text-4xl md:text-5xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform duration-300">
-                3200+
-              </div>
-              <div className="text-gray-600 font-medium">Servers Worldwide</div>
-            </div>
-            <div className="group">
-              <div className="text-4xl md:text-5xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform duration-300">
-                65+
-              </div>
-              <div className="text-gray-600 font-medium">Countries</div>
-            </div>
-            <div className="group">
-              <div className="text-4xl md:text-5xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform duration-300">
-                10M+
-              </div>
-              <div className="text-gray-600 font-medium">Happy Users</div>
-            </div>
-            <div className="group">
-              <div className="text-4xl md:text-5xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform duration-300">
-                99.9%
-              </div>
-              <div className="text-gray-600 font-medium">Uptime</div>
-            </div>
-          </div>
+        {/* Call to Action */}
+        <div className="text-center mt-16">
+          <button className="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-xl-accent hover:scale-105 transition-all duration-300">
+            Start Your Free Trial
+          </button>
         </div>
       </div>
     </section>

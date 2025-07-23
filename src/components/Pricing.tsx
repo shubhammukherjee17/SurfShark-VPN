@@ -10,7 +10,7 @@ const Pricing: React.FC = () => {
   const plans = {
     '24 months': [
       {
-        name: "Surfshark Starter",
+        name: "Secure VPN Starter",
         price: "$1.99",
         period: "/mo.",
         originalPrice: "$417.35",
@@ -28,7 +28,7 @@ const Pricing: React.FC = () => {
         teal: false
       },
       {
-        name: "Surfshark One",
+        name: "Secure VPN One",
         price: "$2.49",
         period: "/mo.",
         originalPrice: "$404.55",
@@ -47,7 +47,7 @@ const Pricing: React.FC = () => {
         teal: true
       },
       {
-        name: "Surfshark One+",
+        name: "Secure VPN One+",
         price: "$3.99",
         period: "/mo.",
         originalPrice: "$567.55",
@@ -67,7 +67,7 @@ const Pricing: React.FC = () => {
     ],
     '12 months': [
       {
-        name: "Surfshark Starter",
+        name: "Secure VPN Starter",
         price: "$2.99",
         period: "/mo.",
         originalPrice: "$215.40",
@@ -85,7 +85,7 @@ const Pricing: React.FC = () => {
         teal: false
       },
       {
-        name: "Surfshark One",
+        name: "Secure VPN One",
         price: "$3.99",
         period: "/mo.",
         originalPrice: "$215.40",
@@ -104,7 +104,7 @@ const Pricing: React.FC = () => {
         teal: true
       },
       {
-        name: "Surfshark One+",
+        name: "Secure VPN One+",
         price: "$5.99",
         period: "/mo.",
         originalPrice: "$323.40",
@@ -124,7 +124,7 @@ const Pricing: React.FC = () => {
     ],
     '1 month': [
       {
-        name: "Surfshark Starter",
+        name: "Secure VPN Starter",
         price: "$15.45",
         period: "/mo.",
         originalPrice: null,
@@ -142,7 +142,7 @@ const Pricing: React.FC = () => {
         teal: false
       },
       {
-        name: "Surfshark One",
+        name: "Secure VPN One",
         price: "$17.95",
         period: "/mo.",
         originalPrice: null,
@@ -161,7 +161,7 @@ const Pricing: React.FC = () => {
         teal: true
       },
       {
-        name: "Surfshark One+",
+        name: "Secure VPN One+",
         price: "$25.95",
         period: "/mo.",
         originalPrice: null,

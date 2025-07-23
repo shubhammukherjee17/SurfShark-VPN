@@ -7,7 +7,7 @@ const Testimonials: React.FC = () => {
       role: "Digital Nomad",
       avatar: "👩‍💻",
       rating: 5,
-      text: "SecureVPN has been a game-changer for my remote work. I can access geo-restricted content and work securely from anywhere in the world. The connection is always fast and reliable.",
+      text: "Secure VPN has been a game-changer for my remote work. I can access geo-restricted content and work securely from anywhere in the world. The connection is always fast and reliable.",
       location: "Barcelona, Spain"
     },
     {
@@ -15,7 +15,7 @@ const Testimonials: React.FC = () => {
       role: "Software Engineer",
       avatar: "👨‍💻",
       rating: 5,
-      text: "As a developer, I need secure connections when working with sensitive data. SecureVPN provides the privacy and security I need without slowing down my workflow.",
+      text: "As a developer, I need secure connections when working with sensitive data. Secure VPN provides the privacy and security I need without slowing down my workflow.",
       location: "San Francisco, USA"
     },
     {
@@ -23,7 +23,7 @@ const Testimonials: React.FC = () => {
       role: "Content Creator",
       avatar: "🎬",
       rating: 5,
-      text: "I travel frequently for my content creation work, and SecureVPN ensures I can access my streaming platforms and upload content securely from any country.",
+      text: "I travel frequently for my content creation work, and Secure VPN ensures I can access my streaming platforms and upload content securely from any country.",
       location: "London, UK"
     },
     {
@@ -31,7 +31,7 @@ const Testimonials: React.FC = () => {
       role: "Business Owner",
       avatar: "👔",
       rating: 5,
-      text: "Privacy is crucial for my business communications. SecureVPN gives me peace of mind knowing my data is encrypted and my online activities are private.",
+      text: "Privacy is crucial for my business communications. Secure VPN gives me peace of mind knowing my data is encrypted and my online activities are private.",
       location: "Mexico City, Mexico"
     },
     {
@@ -47,7 +47,7 @@ const Testimonials: React.FC = () => {
       role: "Cybersecurity Expert",
       avatar: "🔒",
       rating: 5,
-      text: "I've tested many VPN services, and SecureVPN stands out with its strong encryption, no-logs policy, and excellent speed. Highly recommended for security professionals.",
+      text: "I've tested many VPN services, and Secure VPN stands out with its strong encryption, no-logs policy, and excellent speed. Highly recommended for security professionals.",
       location: "Toronto, Canada"
     }
   ];
@@ -74,7 +74,7 @@ const Testimonials: React.FC = () => {
             What Our Users Say
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Join millions of satisfied users who trust SecureVPN to protect their online privacy
+            Join millions of satisfied users who trust Secure VPN to protect their online privacy
           </p>
         </div>
 

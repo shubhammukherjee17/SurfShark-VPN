@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 function App() {
 
   const handleEmergencySupport = () => {
-    alert('🆘 Emergency Support Contact\n\n📞 24/7 Support Available:\n• Live Chat: Available now\n• Email: support@securevpn.com\n• Phone: 1-800-SECURE-VPN\n\n⚡ Average response time: < 5 minutes\n🔒 Priority security support');
+    alert('🆘 Emergency Support Contact\n\n📞 24/7 Support Available:\n• Live Chat: Available now\n• Email: support@securevpn.com\n• Phone: 1-800-SECUREVPN\n\n⚡ Average response time: < 5 minutes\n🔒 Priority security support');
   };
 
   React.useEffect(() => {

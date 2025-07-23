@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     const email = emailInput?.value || '';
     
     if (email && email.includes('@')) {
-      alert(`📧 Newsletter Subscription Successful!\n\nEmail: ${email}\n\n✅ Welcome to SecureVPN updates!\n✅ You'll receive security tips & offers\n✅ Unsubscribe anytime\n\nThank you for subscribing!`);
+      alert(`📧 Newsletter Subscription Successful!\n\nEmail: ${email}\n\n✅ Welcome to Secure VPN updates!\n✅ You'll receive security tips & offers\n✅ Unsubscribe anytime\n\nThank you for subscribing!`);
       if (emailInput) emailInput.value = '';
     } else {
       alert('⚠️ Please enter a valid email address to subscribe to our newsletter.');
@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4">
-              <h3 className="text-2xl font-bold text-blue-400">SecureVPN</h3>
+              <h3 className="text-2xl font-bold text-blue-400">Secure VPN</h3>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Your privacy is our priority. Browse the web safely and anonymously with military-grade encryption and a strict no-logs policy.
@@ -202,7 +202,7 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 mb-4 md:mb-0">
-              © {currentYear} SecureVPN. All rights reserved.
+              © {currentYear} Secure VPN. All rights reserved.
             </div>
             
             {/* Trust Badges */}

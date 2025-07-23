@@ -17,20 +17,20 @@ const FAQ: React.FC = () => {
       answer: "A VPN (Virtual Private Network) creates a secure, encrypted connection between your device and the internet. It protects your online privacy, secures your data from hackers, allows you to access geo-restricted content, and helps you browse anonymously. In today's digital world, a VPN is essential for protecting your personal information from cybercriminals, ISPs, and government surveillance."
     },
     {
-      question: "How does SecureVPN protect my privacy?",
-      answer: "SecureVPN uses military-grade AES-256 encryption to secure your internet connection. We have a strict no-logs policy, meaning we don't track, collect, or store your online activities. Your real IP address is hidden and replaced with one from our secure servers, making it impossible for websites, advertisers, or hackers to trace your online activities back to you."
+      question: "How does Secure VPN protect my privacy?",
+      answer: "Secure VPN uses military-grade AES-256 encryption to secure your internet connection. We have a strict no-logs policy, meaning we don't track, collect, or store your online activities. Your real IP address is hidden and replaced with one from our secure servers, making it impossible for websites, advertisers, or hackers to trace your online activities back to you."
     },
     {
-      question: "Can I use SecureVPN on multiple devices?",
-      answer: "Yes! One SecureVPN subscription allows you to protect up to 10 devices simultaneously. This includes computers, smartphones, tablets, smart TVs, and routers. You can use our apps on Windows, macOS, iOS, Android, Linux, and configure it on compatible routers to protect your entire home network."
+      question: "Can I use Secure VPN on multiple devices?",
+      answer: "Yes! One Secure VPN subscription allows you to protect up to 10 devices simultaneously. This includes computers, smartphones, tablets, smart TVs, and routers. You can use our apps on Windows, macOS, iOS, Android, Linux, and configure it on compatible routers to protect your entire home network."
     },
     {
-      question: "Will SecureVPN slow down my internet connection?",
-      answer: "While any VPN may cause a slight decrease in speed due to encryption, SecureVPN is optimized for performance. With our global network of 3200+ high-speed servers, most users experience minimal speed loss. Our WireGuard protocol ensures the fastest possible connection speeds while maintaining top-level security."
+      question: "Will Secure VPN slow down my internet connection?",
+      answer: "While any VPN may cause a slight decrease in speed due to encryption, Secure VPN is optimized for performance. With our global network of 3200+ high-speed servers, most users experience minimal speed loss. Our WireGuard protocol ensures the fastest possible connection speeds while maintaining top-level security."
     },
     {
       question: "Can I access Netflix and other streaming services?",
-      answer: "Yes! SecureVPN works with popular streaming platforms including Netflix, Hulu, Amazon Prime Video, Disney+, and many others. Our specialized streaming servers are optimized to bypass geo-restrictions, allowing you to access your favorite content from anywhere in the world."
+      answer: "Yes! Secure VPN works with popular streaming platforms including Netflix, Hulu, Amazon Prime Video, Disney+, and many others. Our specialized streaming servers are optimized to bypass geo-restrictions, allowing you to access your favorite content from anywhere in the world."
     },
     {
       question: "Is it legal to use a VPN?",
@@ -42,7 +42,7 @@ const FAQ: React.FC = () => {
     },
     {
       question: "How many server locations do you have?",
-      answer: "SecureVPN operates 3200+ servers across 65+ countries on 6 continents. This extensive network ensures you can always find a fast, nearby server for optimal performance. Our servers are strategically located in major cities worldwide to provide the best possible connection speeds and reliability."
+      answer: "Secure VPN operates 3200+ servers across 65+ countries on 6 continents. This extensive network ensures you can always find a fast, nearby server for optimal performance. Our servers are strategically located in major cities worldwide to provide the best possible connection speeds and reliability."
     },
     {
       question: "What payment methods do you accept?",
@@ -53,12 +53,12 @@ const FAQ: React.FC = () => {
       answer: "Yes! We provide 24/7 customer support through live chat, email, and our comprehensive help center. Our support team consists of VPN experts who can help you with setup, troubleshooting, and any questions about your service. Most live chat inquiries are resolved within minutes."
     },
     {
-      question: "Can I try SecureVPN for free?",
+      question: "Can I try Secure VPN for free?",
       answer: "We offer a 7-day free trial for new users, and all our paid plans come with a 30-day money-back guarantee. This gives you plenty of time to test our service and ensure it meets your needs. If you're not completely satisfied, you can get a full refund within 30 days of purchase."
     },
     {
-      question: "How do I set up SecureVPN?",
-      answer: "Setting up SecureVPN is simple! After subscribing, download our app for your device, sign in with your account credentials, choose a server location, and connect. The entire process takes less than 5 minutes. We also provide detailed setup guides and 24/7 support if you need any assistance."
+      question: "How do I set up Secure VPN?",
+      answer: "Setting up Secure VPN is simple! After subscribing, download our app for your device, sign in with your account credentials, choose a server location, and connect. The entire process takes less than 5 minutes. We also provide detailed setup guides and 24/7 support if you need any assistance."
     }
   ];
 
@@ -71,7 +71,7 @@ const FAQ: React.FC = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-xl text-gray-600">
-            Everything you need to know about SecureVPN
+            Everything you need to know about Secure VPN
           </p>
         </div>
 

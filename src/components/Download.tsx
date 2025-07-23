@@ -5,7 +5,7 @@ const Download: React.FC = () => {
     if (platformName === 'Router') {
       alert(`🔧 Router Setup Guide\n\nPlatform: ${platformName}\n\n📋 Opening setup instructions...\n📖 Step-by-step configuration guide\n🛠️ Technical support available\n\nIn a real app, this would download the setup guide PDF!`);
     } else {
-      alert(`📱 Download Started!\n\nPlatform: ${platformName}\n\n⬇️ Downloading SurfShark VPN app...\n✅ Compatible with your device\n🔒 Digitally signed & secure\n\nIn a real app, this would start the actual download!`);
+      alert(`📱 Download Started!\n\nPlatform: ${platformName}\n\n⬇️ Downloading Secure VPN app...\n✅ Compatible with your device\n🔒 Digitally signed & secure\n\nIn a real app, this would start the actual download!`);
     }
   };
   const platforms = [
