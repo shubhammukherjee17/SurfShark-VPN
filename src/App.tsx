@@ -9,12 +9,14 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import Dashboard from './components/Dashboard';
 import Payment from './components/Payment';
+import AboutUs from './components/AboutUs';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<{name: string, email: string} | null>(null);
   const [showDashboard, setShowDashboard] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
+  const [currentPage, setCurrentPage] = useState('home');
   const [selectedPlan, setSelectedPlan] = useState<{
     name: string;
     price: string;
@@ -62,6 +64,16 @@ function App() {
 
   const handleEmergencySupport = () => {
     alert('🆘 Emergency Support Contact\n\n📞 24/7 Support Available:\n• Live Chat: Available now\n• Email: support@securevpn.com\n• Phone: 1-800-SECUREVPN\n\n⚡ Average response time: < 5 minutes\n🔒 Priority security support');
+  };
+
+  const handleNavigateToPage = (page: string) => {
+    setCurrentPage(page);
+    setShowDashboard(false);
+    setShowPayment(false);
+  };
+
+  const handleBackToHome = () => {
+    setCurrentPage('home');
   };
 
   React.useEffect(() => {
@@ -138,6 +150,12 @@ function App() {
       </div>
     );
   }
+
+  // Handle AboutUs page
+  if (currentPage === 'about-us') {
+    return <AboutUs onBack={handleBackToHome} />;
+  }
+
   return (
     <div className="App">
       <Header 
@@ -157,7 +175,7 @@ function App() {
       <Download />
       <Testimonials />
       <FAQ />
-      <Footer />
+      <Footer onNavigate={handleNavigateToPage} />
 
       <button
         onClick={handleEmergencySupport}
