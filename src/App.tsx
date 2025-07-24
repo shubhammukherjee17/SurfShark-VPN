@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Dashboard from './components/Dashboard';
 import Payment from './components/Payment';
 import AboutUs from './components/AboutUs';
+import Chatbot from './components/Chatbot';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,6 +18,7 @@ function App() {
   const [showDashboard, setShowDashboard] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<{
     name: string;
     price: string;
@@ -62,9 +64,9 @@ function App() {
     setShowDashboard(false);
   };
 
-  const handleEmergencySupport = () => {
-    alert('🆘 Emergency Support Contact\n\n📞 24/7 Support Available:\n• Live Chat: Available now\n• Email: support@securevpn.com\n• Phone: 1-800-SECUREVPN\n\n⚡ Average response time: < 5 minutes\n🔒 Priority security support');
-  };
+  const handleChatbotToggle = React.useCallback(() => {
+    setIsChatbotOpen(!isChatbotOpen);
+  }, [isChatbotOpen]);
 
   const handleNavigateToPage = (page: string) => {
     setCurrentPage(page);
@@ -84,13 +86,13 @@ function App() {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key === 'h') {
         e.preventDefault();
-        handleEmergencySupport();
+        handleChatbotToggle();
       }
     };
     
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, []);
+  }, [handleChatbotToggle]);
 
   if (showPayment && isLoggedIn && user) {
     return (
@@ -101,14 +103,15 @@ function App() {
           selectedPlan={selectedPlan || undefined}
         />
         <button
-          onClick={handleEmergencySupport}
+          onClick={handleChatbotToggle}
           className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl z-50 transition-all duration-300 hover:scale-110 animate-pulse-glow"
-          title="24/7 Support (Ctrl+H)"
+          title="Chat with SecureBot (Ctrl+H)"
         >
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
           </svg>
         </button>
+        <Chatbot isOpen={isChatbotOpen} onClose={() => setIsChatbotOpen(false)} />
       </div>
     );
   }
@@ -143,21 +146,41 @@ function App() {
         </div>
 
         <button
-          onClick={handleEmergencySupport}
+          onClick={handleChatbotToggle}
           className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl z-50 transition-all duration-300 hover:scale-110 animate-pulse-glow"
-          title="24/7 Support (Ctrl+H)"
+          title="Chat with SecureBot (Ctrl+H)"
         >
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
           </svg>
         </button>
+        <Chatbot isOpen={isChatbotOpen} onClose={() => setIsChatbotOpen(false)} />
       </div>
     );
   }
 
   // Handle AboutUs page
   if (currentPage === 'about-us') {
-    return <AboutUs onBack={handleBackToHome} onNavigateToPayment={handleNavigateToPayment} />;
+    return (
+      <>
+        <AboutUs 
+          onBack={handleBackToHome} 
+          onNavigateToPayment={handleNavigateToPayment} 
+          onLogin={handleLogin}
+          isLoggedIn={isLoggedIn}
+        />
+        <button
+          onClick={handleChatbotToggle}
+          className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl z-50 transition-all duration-300 hover:scale-110 animate-pulse-glow"
+          title="Chat with SecureBot (Ctrl+H)"
+        >
+          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
+          </svg>
+        </button>
+        <Chatbot isOpen={isChatbotOpen} onClose={() => setIsChatbotOpen(false)} />
+      </>
+    );
   }
 
   return (
@@ -183,14 +206,16 @@ function App() {
       <Footer onNavigate={handleNavigateToPage} />
 
       <button
-        onClick={handleEmergencySupport}
+        onClick={handleChatbotToggle}
         className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl z-50 transition-all duration-300 hover:scale-110 animate-pulse-glow"
-        title="24/7 Support (Ctrl+H)"
+        title="Chat with SecureBot (Ctrl+H)"
       >
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
         </svg>
       </button>
+
+      <Chatbot isOpen={isChatbotOpen} onClose={() => setIsChatbotOpen(false)} />
     </div>
   );
 }

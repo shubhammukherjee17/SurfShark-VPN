@@ -3,9 +3,11 @@ import React from 'react';
 interface AboutUsProps {
   onBack: () => void;
   onNavigateToPayment?: () => void;
+  onLogin?: (userDetails: {name: string, email: string}) => void;
+  isLoggedIn?: boolean;
 }
 
-const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment }) => {
+const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin, isLoggedIn }) => {
   // Scroll to top when component mounts
   React.useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -301,10 +303,23 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment }) => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
             <button 
               onClick={() => {
-                if (onNavigateToPayment) {
+                if (isLoggedIn && onNavigateToPayment) {
                   onNavigateToPayment();
+                } else if (onLogin) {
+                  // Simulate a quick login for demo purposes
+                  const demoUser = {
+                    name: 'Demo User',
+                    email: 'demo@example.com'
+                  };
+                  onLogin(demoUser);
+                  // Small delay then navigate to payment
+                  setTimeout(() => {
+                    if (onNavigateToPayment) {
+                      onNavigateToPayment();
+                    }
+                  }, 500);
                 } else {
-                  alert('Please log in first to start your free trial!');
+                  alert('🚀 Ready to start your free trial!\n\nPlease use the login button in the header to sign in first, then come back to start your trial.');
                 }
               }}
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl"

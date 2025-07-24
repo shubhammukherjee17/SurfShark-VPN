@@ -21,6 +21,30 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
     name: ''
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [showPhoneDropdown, setShowPhoneDropdown] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [countryCode, setCountryCode] = useState('+1');
+  const [showHumourPopup, setShowHumourPopup] = useState(false);
+
+  const countryCodes = [
+    { code: '+1', country: 'US/CA' },
+    { code: '+44', country: 'UK' },
+    { code: '+49', country: 'DE' },
+    { code: '+81', country: 'JP' },
+    { code: '+61', country: 'AU' },
+    { code: '+91', country: 'IN' }
+  ];
+
+  const handleUSClick = () => {
+    setShowPhoneDropdown(!showPhoneDropdown);
+  };
+
+  const handlePhoneConnect = () => {
+    if (phoneNumber) {
+      setShowHumourPopup(true);
+      // Popup stays until user clicks "Haha, Got It!"
+    }
+  };
 
   const handleGetSecureVPN = () => {
     if (isLoggedIn && onNavigateToPayment) {
@@ -188,7 +212,9 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
 
           <div className="relative flex justify-center lg:justify-end animate-slide-up order-1 lg:order-2 px-4 sm:px-0">
             <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg">
-              <div className="relative z-20 transform -rotate-6 sm:-rotate-12 translate-x-4 sm:translate-x-8 mx-auto">
+              <div className={`relative z-20 transform -rotate-6 sm:-rotate-12 translate-x-4 sm:translate-x-8 mx-auto transition-all duration-700 ease-out ${
+                phoneNumber ? 'scale-110' : 'scale-100'
+              }`}>
                 <div className="w-48 sm:w-56 md:w-64 h-[390px] sm:h-[450px] md:h-[520px] bg-neutral-900 rounded-[2rem] sm:rounded-[2.5rem] p-1.5 sm:p-2 shadow-2xl">
                   <div className="w-full h-full bg-gradient-to-br from-brand-500 to-brand-600 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden relative">
                     <div className="flex justify-between items-center p-3 sm:p-4 text-white text-xs sm:text-sm">
@@ -207,16 +233,81 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
                       </div>
                       <h3 className="text-lg sm:text-xl font-bold mb-2">Protected</h3>
                       <p className="text-xs sm:text-sm opacity-90 mb-3 sm:mb-4">IP: 193.106.244.115</p>
-                      <div className="bg-white/10 rounded-lg sm:rounded-xl p-2 sm:p-3 mb-3 sm:mb-4 backdrop-blur-sm">
-                        <div className="flex items-center space-x-2 sm:space-x-3">
-                          <div className="w-5 sm:w-6 h-3 sm:h-4 bg-blue-500 rounded-sm flex items-center justify-center">
-                            <div className="w-2.5 sm:w-3 h-1.5 sm:h-2 bg-white rounded-sm"></div>
+                      <div className="relative mb-3 sm:mb-4">
+                        <div 
+                          onClick={handleUSClick}
+                          className="bg-white/10 rounded-lg sm:rounded-xl p-2 sm:p-3 backdrop-blur-sm cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105"
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-2 sm:space-x-3">
+                              <div className="w-5 sm:w-6 h-3 sm:h-4 bg-blue-500 rounded-sm flex items-center justify-center">
+                                <div className="w-2.5 sm:w-3 h-1.5 sm:h-2 bg-white rounded-sm"></div>
+                              </div>
+                              <span className="text-xs sm:text-sm font-medium">United States</span>
+                            </div>
+                            <svg 
+                              className={`w-4 h-4 text-white transition-transform duration-300 ${
+                                showPhoneDropdown ? 'rotate-180' : ''
+                              }`} 
+                              fill="none" 
+                              stroke="currentColor" 
+                              viewBox="0 0 24 24"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
                           </div>
-                          <span className="text-xs sm:text-sm font-medium">United States</span>
+                        </div>
+
+                        {/* Phone Input Dropdown */}
+                        <div className={`absolute top-full left-0 right-0 z-50 transition-all duration-500 ease-out origin-top mt-1 ${
+                          showPhoneDropdown 
+                            ? 'opacity-100 transform scale-y-100 translate-y-0' 
+                            : 'opacity-0 transform scale-y-0 -translate-y-2 pointer-events-none'
+                        }`}>
+                          <div className="bg-white/95 backdrop-blur-md rounded-lg sm:rounded-xl p-3 shadow-2xl border border-white/20">
+                            <div className="text-neutral-800 text-[10px] sm:text-xs font-medium mb-2">
+                              Enter phone number to verify:
+                            </div>
+                            
+                            {/* Country Code + Phone Input */}
+                            <div className="flex mb-2">
+                              <select 
+                                value={countryCode}
+                                onChange={(e) => setCountryCode(e.target.value)}
+                                className="bg-white/80 text-neutral-800 text-[10px] sm:text-xs rounded-l-lg px-1 sm:px-2 py-1.5 sm:py-2 border-r border-neutral-300 focus:outline-none focus:ring-1 focus:ring-brand-500"
+                              >
+                                {countryCodes.map((country) => (
+                                  <option key={country.code} value={country.code}>
+                                    {country.code}
+                                  </option>
+                                ))}
+                              </select>
+                              <input
+                                type="tel"
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                placeholder="Phone number"
+                                className="flex-1 bg-white/80 text-neutral-800 text-[10px] sm:text-xs rounded-r-lg px-2 py-1.5 sm:py-2 focus:outline-none focus:ring-1 focus:ring-brand-500"
+                              />
+                            </div>
+                            
+                            {/* Connect Button */}
+                            <button
+                              onClick={handlePhoneConnect}
+                              disabled={!phoneNumber}
+                              className={`w-full py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs font-medium transition-all duration-300 ${
+                                phoneNumber
+                                  ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 hover:scale-105 shadow-lg'
+                                  : 'bg-neutral-300 text-neutral-500 cursor-not-allowed'
+                              }`}
+                            >
+                              {phoneNumber ? 'Connect' : 'Enter Number'}
+                            </button>
+                          </div>
                         </div>
                       </div>
                       <button className="bg-white/20 backdrop-blur-sm text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium w-full hover:bg-white/30 transition-colors">
-                        Disconnect
+                        {phoneNumber ? 'Connected' : 'Disconnect'}
                       </button>
                     </div>
                   </div>
@@ -432,6 +523,31 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
                   </div>
                 </div>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Humorous Popup */}
+      {showHumourPopup && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200] flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl animate-bounce-slow">
+            <div className="p-6 sm:p-8 text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span className="text-2xl">😂</span>
+              </div>
+              <h3 className="text-xl font-bold text-neutral-900 mb-3">
+                Kya bhai kuch bhi karega kya?
+              </h3>
+              <p className="text-neutral-600 text-sm mb-6">
+                Seriously? You thought this would actually connect to a VPN? 😄
+              </p>
+              <button
+                onClick={() => setShowHumourPopup(false)}
+                className="bg-gradient-to-r from-brand-500 to-brand-600 text-white px-6 py-3 rounded-xl font-medium hover:from-brand-600 hover:to-brand-700 transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                Haha, Got It! 😅
+              </button>
             </div>
           </div>
         </div>
