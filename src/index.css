@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom animations */
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -154,7 +153,6 @@
   }
 }
 
-/* Custom base styles */
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -170,7 +168,6 @@
   }
 }
 
-/* Custom utility classes */
 @layer utilities {
   .animate-slideDown {
     animation: slideDown 0.3s ease-out;
@@ -266,9 +263,8 @@
   }
 }
 
-/* Custom Components */
 @layer components {
-  /* Modern Button Styles */
+  
   .btn-primary {
     @apply bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300;
   }
@@ -281,7 +277,6 @@
     @apply border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300;
   }
 
-  /* Modern Card Styles */
   .card {
     @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100;
   }
@@ -290,35 +285,29 @@
     @apply transform hover:-translate-y-2 transition-all duration-300;
   }
 
-  /* Gradient Text */
   .gradient-text {
     @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
   }
 
-  /* Glass Morphism Effect */
   .glass {
     @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl;
   }
 
-  /* Modern Input Styles */
   .input-modern {
     @apply w-full px-4 py-3 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 placeholder-gray-500;
   }
 
-  /* Section Spacing */
   .section-padding {
     @apply py-20 lg:py-24;
   }
 
-  /* Container */
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
 
-/* Custom Utilities */
 @layer utilities {
-  /* Text Shadow */
+  
   .text-shadow {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
@@ -327,7 +316,6 @@
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
-  /* Box Shadow Variations */
   .shadow-glow {
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
   }
@@ -336,7 +324,6 @@
     box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
   }
 
-  /* Modern Gradients */
   .bg-gradient-modern {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   }
@@ -349,14 +336,12 @@
     background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%);
   }
 
-  /* Animated Gradients */
   .bg-animated {
     background: linear-gradient(-45deg, #2563eb, #7c3aed, #dc2626, #ea580c);
     background-size: 400% 400%;
     animation: gradient 8s ease infinite;
   }
 
-  /* Border Gradients */
   .border-gradient {
     border: 2px solid transparent;
     background: linear-gradient(white, white) padding-box, 
@@ -364,7 +349,6 @@
   }
 }
 
-/* Custom Animations */
 @keyframes gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -409,7 +393,6 @@
   }
 }
 
-/* Animation Classes */
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
@@ -426,7 +409,6 @@
   animation: fadeInScale 0.5s ease-out;
 }
 
-/* Smooth Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -444,19 +426,16 @@
   background: #94a3b8;
 }
 
-/* Modern Focus States */
 .focus-visible {
   @apply outline-none ring-4 ring-blue-500/20 ring-offset-2;
 }
 
-/* App Container Improvements */
 .App {
   text-align: left;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* Modern Typography */
 .heading-modern {
   @apply font-bold leading-tight tracking-tight;
 }
@@ -465,7 +444,6 @@
   @apply leading-relaxed text-gray-600;
 }
 
-/* Hover Effects */
 .hover-lift {
   @apply transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
 }
@@ -474,7 +452,6 @@
   @apply transition-all duration-300 hover:shadow-glow;
 }
 
-/* Responsive Text Sizes */
 .text-hero {
   @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
 }
@@ -483,7 +460,6 @@
   @apply text-2xl md:text-3xl lg:text-4xl;
 }
 
-/* Modern Spacing */
 .space-modern > * + * {
   margin-top: 1.5rem;
 }

@@ -65,7 +65,7 @@ const FAQ: React.FC = () => {
   return (
     <section id="faq" className="py-20 bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Frequently Asked Questions
@@ -75,7 +75,7 @@ const FAQ: React.FC = () => {
           </p>
         </div>
 
-        {/* FAQ Items */}
+        {}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div
@@ -114,7 +114,7 @@ const FAQ: React.FC = () => {
           ))}
         </div>
 
-        {/* Contact Support */}
+        {}
         <div className="mt-16 text-center">
           <div className="bg-blue-50 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -134,7 +134,7 @@ const FAQ: React.FC = () => {
           </div>
         </div>
 
-        {/* Search FAQ */}
+        {}
         <div className="mt-12">
           <div className="relative max-w-md mx-auto">
             <input

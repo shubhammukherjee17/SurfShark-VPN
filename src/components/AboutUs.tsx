@@ -8,7 +8,6 @@ interface AboutUsProps {
 }
 
 const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin, isLoggedIn }) => {
-  // Scroll to top when component mounts
   React.useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
@@ -53,7 +52,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin,
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 animate-fade-in">
-      {/* Header */}
+      {}
       <div className="bg-white shadow-sm border-b border-neutral-200 animate-slide-down">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -73,7 +72,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin,
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero Section */}
+        {}
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl font-bold text-gray-900 mb-6 animate-bounce-in">
             Protecting Digital Privacy Since 2015
@@ -88,7 +87,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin,
           </div>
         </div>
 
-        {/* Stats Section */}
+        {}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           {stats.map((stat, index) => (
             <div 
@@ -103,7 +102,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin,
           ))}
         </div>
 
-        {/* Mission Section */}
+        {}
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-16 animate-slide-up hover:shadow-2xl transition-all duration-500">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-left">
@@ -149,7 +148,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin,
           </div>
         </div>
 
-        {/* Values Section */}
+        {}
         <div className="mb-16 animate-fade-in-up">
           <h3 className="text-3xl font-bold text-gray-900 text-center mb-12 animate-bounce-in">Our Core Values</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -167,7 +166,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin,
           </div>
         </div>
 
-        {/* Team Section */}
+        {}
         <div className="mb-16 animate-slide-up">
           <h3 className="text-3xl font-bold text-gray-900 text-center mb-12 animate-bounce-in">Meet the Founder</h3>
           <div className="flex justify-center">
@@ -188,7 +187,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin,
                 <p className="text-blue-600 font-semibold mb-4 text-lg group-hover:scale-105 transition-transform duration-300">{member.role}</p>
                 <p className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300 leading-relaxed">{member.description}</p>
                 
-                {/* Social Links */}
+                {}
                 <div className="flex justify-center space-x-4 mt-6">
                   <a href="https://github.com/shubhammukherjee17" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 transition-colors duration-300">
                     <span className="text-2xl">🔗</span>
@@ -204,7 +203,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin,
             ))}
           </div>
           
-          {/* Personal Message */}
+          {}
           <div className="mt-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 max-w-4xl mx-auto animate-fade-in-up">
             <div className="text-center">
               <h4 className="text-2xl font-bold text-gray-900 mb-4">A Personal Message</h4>
@@ -223,11 +222,11 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin,
           </div>
         </div>
 
-        {/* History Timeline */}
+        {}
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-16 animate-slide-up hover:shadow-2xl transition-all duration-500">
           <h3 className="text-3xl font-bold text-gray-900 text-center mb-12 animate-bounce-in">Our Journey</h3>
           
-          {/* Disclaimer */}
+          {}
           <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8 rounded-r-lg">
             <div className="flex">
               <div className="flex-shrink-0">
@@ -294,7 +293,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin,
           </div>
         </div>
 
-        {/* Contact CTA */}
+        {}
         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-center text-white animate-scale-in hover:scale-105 transition-transform duration-500 hover:shadow-2xl">
           <h3 className="text-3xl font-bold mb-4 animate-bounce-in">Ready to Get Started?</h3>
           <p className="text-xl mb-6 opacity-90 animate-fade-in-delay">
@@ -306,13 +305,11 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment, onLogin,
                 if (isLoggedIn && onNavigateToPayment) {
                   onNavigateToPayment();
                 } else if (onLogin) {
-                  // Simulate a quick login for demo purposes
                   const demoUser = {
                     name: 'Demo User',
                     email: 'demo@example.com'
                   };
                   onLogin(demoUser);
-                  // Small delay then navigate to payment
                   setTimeout(() => {
                     if (onNavigateToPayment) {
                       onNavigateToPayment();

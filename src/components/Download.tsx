@@ -80,7 +80,7 @@ const Download: React.FC = () => {
   return (
     <section id="download" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Download SecureVPN
@@ -90,7 +90,7 @@ const Download: React.FC = () => {
           </p>
         </div>
 
-        {/* Platform Grid */}
+        {}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {platforms.map((platform, index) => (
             <div
@@ -98,24 +98,24 @@ const Download: React.FC = () => {
               className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="text-center">
-                {/* Platform Icon */}
+                {}
                 <div className="text-blue-600 mb-4 flex justify-center">
                   {platform.icon}
                 </div>
                 
-                {/* Platform Name */}
+                {}
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   {platform.name}
                 </h3>
                 
-                {/* Version Info */}
+                {}
                 <div className="text-gray-600 mb-6 space-y-1">
                   <div className="font-medium">{platform.version}</div>
                   <div className="text-sm">{platform.size}</div>
                   <div className="text-sm">{platform.requirements}</div>
                 </div>
                 
-                {/* Download Button */}
+                {}
                 <button 
                   onClick={() => handleDownload(platform.name)}
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors duration-300"
@@ -127,7 +127,7 @@ const Download: React.FC = () => {
           ))}
         </div>
 
-        {/* Browser Extensions */}
+        {}
         <div className="bg-white rounded-2xl p-8 shadow-lg">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -155,7 +155,7 @@ const Download: React.FC = () => {
           </div>
         </div>
 
-        {/* Quick Setup Guide */}
+        {}
         <div className="mt-16 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-8">
             Quick Setup in 3 Easy Steps

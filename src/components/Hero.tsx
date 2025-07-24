@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 
 interface HeroProps {
   onLogin: (userDetails: { name: string; email: string; }) => void;
@@ -42,7 +42,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
   const handlePhoneConnect = () => {
     if (phoneNumber) {
       setShowHumourPopup(true);
-      // Popup stays until user clicks "Haha, Got It!"
     }
   };
 
@@ -98,9 +97,9 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       if (authMode === 'signup') {
-        alert(`🎉 Welcome to Secure VPN, ${formData.name}!\n\n📋 Account Details:\n• Full Name: ${formData.name}\n• Email: ${formData.email}\n• Password: ${'*'.repeat(formData.password.length)} (${formData.password.length} characters)\n• Account Type: Premium Trial\n• Registration Date: ${new Date().toLocaleDateString()}\n\n✅ Account created successfully\n✅ Verification email sent to ${formData.email}\n✅ 7-day free trial activated\n✅ Profile setup complete\n\nRedirecting to dashboard...`);
+        alert(`?? Welcome to Secure VPN, ${formData.name}!\n\n?? Account Details:\n� Full Name: ${formData.name}\n� Email: ${formData.email}\n� Password: ${'*'.repeat(formData.password.length)} (${formData.password.length} characters)\n� Account Type: Premium Trial\n� Registration Date: ${new Date().toLocaleDateString()}\n\n? Account created successfully\n? Verification email sent to ${formData.email}\n? 7-day free trial activated\n? Profile setup complete\n\nRedirecting to dashboard...`);
       } else {
-        alert(`🚀 Welcome back to Secure VPN!\n\n📋 Login Details:\n• Email: ${formData.email}\n• Password: ${'*'.repeat(formData.password.length)} (${formData.password.length} characters)\n• Login Time: ${new Date().toLocaleTimeString()}\n• Login Date: ${new Date().toLocaleDateString()}\n• Device: Web Browser\n\n✅ Login successful\n✅ All devices synced\n✅ Premium features available\n✅ Session restored\n\nRedirecting to dashboard...`);
+        alert(`?? Welcome back to Secure VPN!\n\n?? Login Details:\n� Email: ${formData.email}\n� Password: ${'*'.repeat(formData.password.length)} (${formData.password.length} characters)\n� Login Time: ${new Date().toLocaleTimeString()}\n� Login Date: ${new Date().toLocaleDateString()}\n� Device: Web Browser\n\n? Login successful\n? All devices synced\n? Premium features available\n? Session restored\n\nRedirecting to dashboard...`);
       }
       
       const userDetails = {
@@ -258,7 +257,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
                           </div>
                         </div>
 
-                        {/* Phone Input Dropdown */}
                         <div className={`absolute top-full left-0 right-0 z-50 transition-all duration-500 ease-out origin-top mt-1 ${
                           showPhoneDropdown 
                             ? 'opacity-100 transform scale-y-100 translate-y-0' 
@@ -269,7 +267,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
                               Enter phone number to verify:
                             </div>
                             
-                            {/* Country Code + Phone Input */}
                             <div className="flex mb-2">
                               <select 
                                 value={countryCode}
@@ -291,7 +288,6 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
                               />
                             </div>
                             
-                            {/* Connect Button */}
                             <button
                               onClick={handlePhoneConnect}
                               disabled={!phoneNumber}
@@ -528,25 +524,24 @@ const Hero: React.FC<HeroProps> = ({ onLogin, onNavigateToPayment, isLoggedIn = 
         </div>
       )}
 
-      {/* Humorous Popup */}
       {showHumourPopup && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200] flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl animate-bounce-slow">
             <div className="p-6 sm:p-8 text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-2xl">😂</span>
+                <span className="text-2xl">??</span>
               </div>
               <h3 className="text-xl font-bold text-neutral-900 mb-3">
                 Kya bhai kuch bhi karega kya?
               </h3>
               <p className="text-neutral-600 text-sm mb-6">
-                Seriously? You thought this would actually connect to a VPN? 😄
+                Seriously? You thought this would actually connect to a VPN? ??
               </p>
               <button
                 onClick={() => setShowHumourPopup(false)}
                 className="bg-gradient-to-r from-brand-500 to-brand-600 text-white px-6 py-3 rounded-xl font-medium hover:from-brand-600 hover:to-brand-700 transition-all duration-300 hover:scale-105 shadow-lg"
               >
-                Haha, Got It! 😅
+                Haha, Got It! ??
               </button>
             </div>
           </div>

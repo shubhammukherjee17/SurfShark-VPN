@@ -232,7 +232,7 @@ const Payment: React.FC<PaymentProps> = ({ user, onBackToWebsite, selectedPlan }
               <form onSubmit={handlePayment} className="space-y-6">
                 {paymentMethod === 'card' ? (
                   <>
-                    {/* Card Information */}
+                    {}
                     <div>
                       <h3 className="font-semibold text-neutral-900 mb-4">Card Information</h3>
                       <div className="space-y-4">

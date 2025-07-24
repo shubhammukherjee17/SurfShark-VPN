@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface HeaderProps {
   onLogin?: (userDetails: { name: string; email: string; }) => void;
@@ -68,9 +68,9 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, onNavigateToAb
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       if (authMode === 'signup') {
-        alert(`🎉 Welcome to Secure VPN, ${formData.name}!\n\n📋 Account Details:\n• Full Name: ${formData.name}\n• Email: ${formData.email}\n• Password: ${'*'.repeat(formData.password.length)} (${formData.password.length} characters)\n\n✅ Account created successfully\n✅ Verification email sent to ${formData.email}\n✅ 7-day free trial activated\n✅ Profile setup complete\n\nRedirecting to dashboard...`);
+        alert(`?? Welcome to Secure VPN, ${formData.name}!\n\n?? Account Details:\n� Full Name: ${formData.name}\n� Email: ${formData.email}\n� Password: ${'*'.repeat(formData.password.length)} (${formData.password.length} characters)\n\n? Account created successfully\n? Verification email sent to ${formData.email}\n? 7-day free trial activated\n? Profile setup complete\n\nRedirecting to dashboard...`);
       } else {
-        alert(`🚀 Welcome back to Secure VPN!\n\n📋 Login Details:\n• Email: ${formData.email}\n• Password: ${'*'.repeat(formData.password.length)} (${formData.password.length} characters)\n• Login Time: ${new Date().toLocaleTimeString()}\n\n✅ Login successful\n✅ All devices synced\n✅ Premium features available\n✅ Session restored\n\nRedirecting to dashboard...`);
+        alert(`?? Welcome back to Secure VPN!\n\n?? Login Details:\n� Email: ${formData.email}\n� Password: ${'*'.repeat(formData.password.length)} (${formData.password.length} characters)\n� Login Time: ${new Date().toLocaleTimeString()}\n\n? Login successful\n? All devices synced\n? Premium features available\n? Session restored\n\nRedirecting to dashboard...`);
       }
       
       const userDetails = {

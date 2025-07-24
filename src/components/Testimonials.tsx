@@ -1,7 +1,5 @@
 import React from 'react';
 
-// Note: Testimonials are created using AI to show diverse user experiences and trust in the VPN service.
-
 interface TestimonialsProps {
   onNavigateToAbout?: () => void;
 }
@@ -74,7 +72,6 @@ const Testimonials: React.FC<TestimonialsProps> = ({ onNavigateToAbout }) => {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             What Our Users Say

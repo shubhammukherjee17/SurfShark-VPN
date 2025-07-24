@@ -31,11 +31,11 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+      {}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
+            {}
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-brand-500 to-brand-600 rounded-lg flex items-center justify-center">
                 <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -47,7 +47,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
               </div>
             </div>
 
-            {/* User Menu */}
+            {}
             <div className="flex items-center space-x-4">
               <div className="text-sm text-gray-600">
                 Welcome, <span className="font-medium text-gray-900">{user.name}</span>
@@ -64,7 +64,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Tab Navigation */}
+        {}
         <div className="flex space-x-1 bg-gray-100 rounded-lg p-1 mb-8 max-w-md">
           {[
             { id: 'overview', label: 'Overview' },
@@ -85,15 +85,15 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
           ))}
         </div>
 
-        {/* Overview Tab */}
+        {}
         {selectedTab === 'overview' && (
           <div className="space-y-6">
-            {/* Connection Status */}
+            {}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">Connection Status</h2>
               
               <div className="grid md:grid-cols-2 gap-6">
-                {/* Connection Control */}
+                {}
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
@@ -133,7 +133,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
                   )}
                 </div>
 
-                {/* Connection Stats */}
+                {}
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-gray-50 rounded-lg p-4">
@@ -158,7 +158,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
               </div>
             </div>
 
-            {/* Quick Stats */}
+            {}
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                 <div className="flex items-center">
@@ -205,7 +205,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
           </div>
         )}
 
-        {/* Servers Tab */}
+        {}
         {selectedTab === 'servers' && (
           <div className="bg-white rounded-2xl shadow-sm border border-gray-200">
             <div className="p-6 border-b border-gray-200">
@@ -249,7 +249,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
           </div>
         )}
 
-        {/* Settings Tab */}
+        {}
         {selectedTab === 'settings' && (
           <div className="space-y-6">
             <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">

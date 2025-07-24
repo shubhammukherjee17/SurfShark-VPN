@@ -76,7 +76,6 @@ function App() {
 
   const handleBackToHome = () => {
     setCurrentPage('home');
-    // Smooth scroll to top when returning to home
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 100);
@@ -159,7 +158,6 @@ function App() {
     );
   }
 
-  // Handle AboutUs page
   if (currentPage === 'about-us') {
     return (
       <>

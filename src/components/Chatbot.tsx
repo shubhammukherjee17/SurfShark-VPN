@@ -36,7 +36,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
   const getBotResponse = (userMessage: string): string => {
     const message = userMessage.toLowerCase();
     
-    // VPN-specific responses
     if (message.includes('price') || message.includes('cost') || message.includes('plan')) {
       return "💰 Our plans start at $4.99/month! We offer:\n• Basic Plan: $4.99/month\n• Pro Plan: $8.99/month\n• Premium Plan: $12.99/month\n\nAll plans include a 30-day money-back guarantee! 🛡️";
     }
@@ -81,7 +80,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
       return "😊 You're very welcome! Is there anything else about SecureVPN I can help you with today?";
     }
     
-    // Default response
     return "🤔 I'm here to help with any VPN questions! You can ask me about:\n• Pricing and plans\n• Server locations\n• Security features\n• Streaming capabilities\n• Device compatibility\n• Free trial information\n\nWhat would you like to know? 💭";
   };
 
@@ -99,7 +97,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate bot typing delay
     setTimeout(() => {
       const botResponse: Message = {
         id: messages.length + 2,
@@ -110,7 +107,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
 
       setMessages(prev => [...prev, botResponse]);
       setIsTyping(false);
-    }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
+    }, 1000 + Math.random() * 1000);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -131,15 +128,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-end p-4 md:p-6">
-      {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black bg-opacity-20 backdrop-blur-sm"
         onClick={onClose}
       />
       
-      {/* Chatbot Container */}
       <div className="relative w-full max-w-md h-[650px] bg-white rounded-2xl shadow-2xl flex flex-col animate-slide-up border border-gray-200">
-        {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-5 rounded-t-2xl flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="w-11 h-11 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
@@ -160,7 +154,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        {/* Messages Area */}
         <div className="flex-1 overflow-y-auto p-5 space-y-5 bg-gray-50">
           {messages.map((message) => (
             <div
@@ -182,7 +175,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
             </div>
           ))}
           
-          {/* Typing Indicator */}
           {isTyping && (
             <div className="flex justify-start">
               <div className="bg-white px-5 py-4 rounded-2xl shadow-sm border border-gray-200">
@@ -198,7 +190,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Quick Actions */}
         {messages.length <= 1 && (
           <div className="px-5 pb-4">
             <p className="text-xs text-gray-500 mb-3">Quick questions:</p>
@@ -216,7 +207,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
           </div>
         )}
 
-        {/* Input Area */}
         <div className="p-5 border-t border-gray-200 bg-white rounded-b-2xl">
           <div className="flex space-x-3">
             <input
