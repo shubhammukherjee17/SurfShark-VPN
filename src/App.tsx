@@ -74,6 +74,10 @@ function App() {
 
   const handleBackToHome = () => {
     setCurrentPage('home');
+    // Smooth scroll to top when returning to home
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
   };
 
   React.useEffect(() => {
@@ -153,7 +157,7 @@ function App() {
 
   // Handle AboutUs page
   if (currentPage === 'about-us') {
-    return <AboutUs onBack={handleBackToHome} />;
+    return <AboutUs onBack={handleBackToHome} onNavigateToPayment={handleNavigateToPayment} />;
   }
 
   return (
@@ -163,6 +167,7 @@ function App() {
         user={user} 
         onLogout={handleLogout}
         onNavigateToDashboard={handleNavigateToDashboard}
+        onNavigateToAbout={() => handleNavigateToPage('about-us')}
         isLoggedIn={isLoggedIn}
       />
       <Hero 
@@ -173,7 +178,7 @@ function App() {
       <Features />
       <Pricing onNavigateToPayment={handleNavigateToPayment} />
       <Download />
-      <Testimonials />
+      <Testimonials onNavigateToAbout={() => handleNavigateToPage('about-us')} />
       <FAQ />
       <Footer onNavigate={handleNavigateToPage} />
 

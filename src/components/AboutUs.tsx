@@ -2,9 +2,14 @@ import React from 'react';
 
 interface AboutUsProps {
   onBack: () => void;
+  onNavigateToPayment?: () => void;
 }
 
-const AboutUs: React.FC<AboutUsProps> = ({ onBack }) => {
+const AboutUs: React.FC<AboutUsProps> = ({ onBack, onNavigateToPayment }) => {
+  // Scroll to top when component mounts
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
   const stats = [
     { number: '10M+', label: 'Active Users', icon: '👥' },
     { number: '65+', label: 'Countries', icon: '🌍' },
@@ -14,28 +19,10 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack }) => {
 
   const teamMembers = [
     {
-      name: 'Alex Chen',
-      role: 'CEO & Founder',
-      image: '👨‍💼',
-      description: 'Former cybersecurity expert with 15+ years in digital privacy'
-    },
-    {
-      name: 'Sarah Johnson',
-      role: 'CTO',
-      image: '👩‍💻',
-      description: 'Leading our technical innovation and infrastructure development'
-    },
-    {
-      name: 'Mike Rodriguez',
-      role: 'Head of Security',
-      image: '👨‍🔧',
-      description: 'Ensures our military-grade encryption and zero-log policy'
-    },
-    {
-      name: 'Emily Davis',
-      role: 'Head of Customer Success',
-      image: '👩‍💼',
-      description: 'Dedicated to providing exceptional user experience and support'
+      name: 'Shubham Mukherjee',
+      role: 'Founder & CEO',
+      image: '/images/image.png',
+      description: 'Full-stack developer and cybersecurity enthusiast dedicated to protecting digital privacy worldwide'
     }
   ];
 
@@ -180,26 +167,79 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack }) => {
 
         {/* Team Section */}
         <div className="mb-16 animate-slide-up">
-          <h3 className="text-3xl font-bold text-gray-900 text-center mb-12 animate-bounce-in">Meet Our Team</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h3 className="text-3xl font-bold text-gray-900 text-center mb-12 animate-bounce-in">Meet the Founder</h3>
+          <div className="flex justify-center">
             {teamMembers.map((member, index) => (
               <div 
                 key={index} 
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 text-center animate-fade-in-up group cursor-pointer hover:-translate-y-2"
+                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 text-center animate-fade-in-up group cursor-pointer hover:-translate-y-2 max-w-sm"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="text-6xl mb-4 group-hover:animate-bounce">{member.image}</div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">{member.name}</h4>
-                <p className="text-blue-600 font-semibold mb-3 group-hover:scale-105 transition-transform duration-300">{member.role}</p>
-                <p className="text-gray-600 text-sm group-hover:text-gray-800 transition-colors duration-300">{member.description}</p>
+                <div className="mb-6 group-hover:scale-105 transition-transform duration-300">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-blue-100 group-hover:border-blue-300 transition-colors duration-300 shadow-lg"
+                  />
+                </div>
+                <h4 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">{member.name}</h4>
+                <p className="text-blue-600 font-semibold mb-4 text-lg group-hover:scale-105 transition-transform duration-300">{member.role}</p>
+                <p className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300 leading-relaxed">{member.description}</p>
+                
+                {/* Social Links */}
+                <div className="flex justify-center space-x-4 mt-6">
+                  <a href="https://github.com/shubhammukherjee17" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 transition-colors duration-300">
+                    <span className="text-2xl">🔗</span>
+                  </a>
+                  <a href="https://www.linkedin.com/in/theshubhammukherjee/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-600 transition-colors duration-300">
+                    <span className="text-2xl">💼</span>
+                  </a>
+                  <a href="https://twitter.com/ItsShubhamDev" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+                    <span className="text-2xl">🐦</span>
+                  </a>
+                </div>
               </div>
             ))}
+          </div>
+          
+          {/* Personal Message */}
+          <div className="mt-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 max-w-4xl mx-auto animate-fade-in-up">
+            <div className="text-center">
+              <h4 className="text-2xl font-bold text-gray-900 mb-4">A Personal Message</h4>
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                "I started SecureVPN with a simple mission: to make online privacy accessible to everyone. 
+                As a developer who understands the importance of digital security, I wanted to create a service 
+                that combines cutting-edge technology with user-friendly design."
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed italic">
+                "Your privacy is not just our business—it's our passion."
+              </p>
+              <div className="mt-6">
+                <span className="text-2xl font-bold text-blue-600">- Shubham Mukherjee</span>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* History Timeline */}
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-16 animate-slide-up hover:shadow-2xl transition-all duration-500">
           <h3 className="text-3xl font-bold text-gray-900 text-center mb-12 animate-bounce-in">Our Journey</h3>
+          
+          {/* Disclaimer */}
+          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8 rounded-r-lg">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <span className="text-2xl">ℹ️</span>
+              </div>
+              <div className="ml-3">
+                <p className="text-sm text-yellow-800">
+                  <strong>Note:</strong> This timeline represents a conceptual project demonstration. 
+                  The dates and milestones are created for educational and showcase purposes only.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div className="space-y-8">
             <div className="flex items-start space-x-4 animate-slide-right hover:scale-105 transition-transform duration-300 p-4 rounded-lg hover:bg-gray-50">
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 hover:rotate-12 transition-transform duration-300">
@@ -237,21 +277,45 @@ const AboutUs: React.FC<AboutUsProps> = ({ onBack }) => {
                 <p className="text-gray-600 hover:text-gray-800 transition-colors duration-300">Awarded "Best VPN Service" by multiple cybersecurity organizations</p>
               </div>
             </div>
+            <div className="flex items-start space-x-4 animate-slide-right hover:scale-105 transition-transform duration-300 p-4 rounded-lg hover:bg-gray-50" style={{ animationDelay: '400ms' }}>
+              <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center flex-shrink-0 hover:rotate-12 transition-transform duration-300">
+                <span className="text-2xl">🎯</span>
+              </div>
+              <div>
+                <h4 className="text-xl font-bold text-gray-900 mb-2 hover:text-cyan-600 transition-colors duration-300">2025 - Project Showcase</h4>
+                <p className="text-gray-600 hover:text-gray-800 transition-colors duration-300">
+                  Developed comprehensive VPN website with modern React architecture and user-centric design
+                  <span className="block text-xs mt-1 text-gray-500 italic">*Reference milestone for project demonstration</span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Contact CTA */}
         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-center text-white animate-scale-in hover:scale-105 transition-transform duration-500 hover:shadow-2xl">
-          <h3 className="text-3xl font-bold mb-4 animate-bounce-in">Want to Learn More?</h3>
+          <h3 className="text-3xl font-bold mb-4 animate-bounce-in">Ready to Get Started?</h3>
           <p className="text-xl mb-6 opacity-90 animate-fade-in-delay">
-            Have questions about our mission, technology, or team? We'd love to hear from you.
+            Join thousands of users who trust SecureVPN for their online privacy and security.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl">
-              Contact Us
+            <button 
+              onClick={() => {
+                if (onNavigateToPayment) {
+                  onNavigateToPayment();
+                } else {
+                  alert('Please log in first to start your free trial!');
+                }
+              }}
+              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl"
+            >
+              Start Your Free Trial
             </button>
-            <button className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl">
-              View Careers
+            <button 
+              onClick={onBack}
+              className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl"
+            >
+              Back to Home
             </button>
           </div>
         </div>

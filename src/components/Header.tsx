@@ -5,10 +5,11 @@ interface HeaderProps {
   user?: { name: string; email: string; } | null;
   onLogout?: () => void;
   onNavigateToDashboard?: () => void;
+  onNavigateToAbout?: () => void;
   isLoggedIn?: boolean;
 }
 
-const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = false }: HeaderProps) => {
+const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, onNavigateToAbout, isLoggedIn = false }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('signup');
@@ -129,6 +130,13 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
 
           <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <a 
+              href="#about" 
+              onClick={(e) => { e.preventDefault(); onNavigateToAbout && onNavigateToAbout(); }}
+              className="text-neutral-600 hover:text-brand-600 font-medium transition-colors duration-200 text-sm lg:text-base"
+            >
+              About
+            </a>
+            <a 
               href="#features" 
               onClick={(e) => { e.preventDefault(); handleMenuClick('features'); }}
               className="text-neutral-600 hover:text-brand-600 font-medium transition-colors duration-200 text-sm lg:text-base"
@@ -247,6 +255,12 @@ const Header = ({ onLogin, user, onLogout, onNavigateToDashboard, isLoggedIn = f
 
         <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-neutral-100">
+            <button
+              onClick={() => { setIsMobileMenuOpen(false); onNavigateToAbout && onNavigateToAbout(); }}
+              className="block w-full text-left px-3 py-2 text-base font-medium text-neutral-600 hover:text-brand-600 hover:bg-neutral-50 rounded-md transition-all duration-200 transform hover:translate-x-1"
+            >
+              About
+            </button>
             <button
               onClick={() => handleMenuClick('features')}
               className="block w-full text-left px-3 py-2 text-base font-medium text-neutral-600 hover:text-brand-600 hover:bg-neutral-50 rounded-md transition-all duration-200 transform hover:translate-x-1"

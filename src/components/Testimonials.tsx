@@ -2,7 +2,11 @@ import React from 'react';
 
 // Note: Testimonials are created using AI to show diverse user experiences and trust in the VPN service.
 
-const Testimonials: React.FC = () => {
+interface TestimonialsProps {
+  onNavigateToAbout?: () => void;
+}
+
+const Testimonials: React.FC<TestimonialsProps> = ({ onNavigateToAbout }) => {
   const testimonials = [
     {
       name: "Sarah Johnson",
@@ -84,7 +88,8 @@ const Testimonials: React.FC = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:bg-gray-100"
+              onClick={() => onNavigateToAbout && onNavigateToAbout()}
             >
 
               <div className="flex items-center mb-4">
@@ -142,21 +147,30 @@ const Testimonials: React.FC = () => {
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="flex flex-col items-center">
-              <div className="text-6xl mb-4">🏆</div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">Best VPN 2024</h4>
+            <div 
+              className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-300 p-4 rounded-xl hover:bg-gray-50"
+              onClick={() => onNavigateToAbout && onNavigateToAbout()}
+            >
+              <div className="text-6xl mb-4 hover:animate-bounce">🏆</div>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2 hover:text-blue-600 transition-colors duration-300">Best VPN 2024</h4>
               <p className="text-gray-600">TechRadar Choice Award</p>
             </div>
             
-            <div className="flex flex-col items-center">
-              <div className="text-6xl mb-4">⭐</div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">Editor's Choice</h4>
+            <div 
+              className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-300 p-4 rounded-xl hover:bg-gray-50"
+              onClick={() => onNavigateToAbout && onNavigateToAbout()}
+            >
+              <div className="text-6xl mb-4 hover:animate-pulse">⭐</div>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2 hover:text-yellow-600 transition-colors duration-300">Editor's Choice</h4>
               <p className="text-gray-600">PCMag Excellence Award</p>
             </div>
             
-            <div className="flex flex-col items-center">
-              <div className="text-6xl mb-4">🛡️</div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">Most Secure VPN</h4>
+            <div 
+              className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-300 p-4 rounded-xl hover:bg-gray-50"
+              onClick={() => onNavigateToAbout && onNavigateToAbout()}
+            >
+              <div className="text-6xl mb-4 hover:animate-spin">🛡️</div>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2 hover:text-green-600 transition-colors duration-300">Most Secure VPN</h4>
               <p className="text-gray-600">Cybersecurity Excellence Awards</p>
             </div>
           </div>
