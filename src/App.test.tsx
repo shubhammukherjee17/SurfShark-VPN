@@ -4,6 +4,6 @@ import App from './App';
 
 test('renders Secure VPN brand', () => {
   render(<App />);
-  const brandElement = screen.getByText(/Secure VPN/i);
-  expect(brandElement).toBeInTheDocument();
+  const matches = screen.getAllByText(/Secure VPN/i);
+  expect(matches.length).toBeGreaterThan(0);
 });
